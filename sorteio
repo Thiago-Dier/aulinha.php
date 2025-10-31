@@ -1,0 +1,31 @@
+<?php
+
+    sorteio ();
+
+    function sorteio () {
+
+        $chute = 0;
+        $tentativas= 0;
+
+        $min = readline ("Informe o valor mínimo do seu intervalo: \n");
+        $max = readline ("Informe o valor máximo do seu intervalo: \n");
+        $sorteado = rand ($min, $max);
+
+         while ($chute != $sorteado){
+
+        $chute = (int) readline ("Digite um número ");
+        $tentativas ++;
+
+        if ($chute == $sorteado) {
+            print ("Você venceu\n");
+            print ("Você precisou de $tentativas tentativas para acertar");
+        } else {
+            print ("Você perdeu\n");
+        if ($chute > $sorteado){
+            print ("Esse número é maior que o valor que estou pensando\n");
+        } else {
+            print ("Esse número é menor que o valor que estou pensando\n");
+            }
+        }
+    }
+    }
