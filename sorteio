@@ -8,7 +8,7 @@
         $tentativas= 0;
 
         $min = readline ("Informe o valor mínimo do seu intervalo: \n");
-        $max = readline ("Informe o valor máximo do seu intervalo: \n");
+        $max = readline ("Informe o valor máximo do seu intervalo: \n"); // Algoritmo pra definir o intervalo;
         $sorteado = rand ($min, $max);
 
          while ($chute != $sorteado){
@@ -17,12 +17,17 @@
         $tentativas ++;
 
         if ($chute == $sorteado) {
-            print ("Você venceu\n");
-            print ("Você precisou de $tentativas tentativas para acertar");
+            print ("\033[42mVocê venceu\033[0m\n");
+            print ("\033[42mVocê precisou de $tentativas tentativas para acertar\033[0m\n"); //
+            if ($tentativas < 3) {                                                           //
+                print ("\033[42mVocê tem uma mira certeira!\033[0m");                        // Algoritmo pra pontuação;
+            } else {                                                                         //
+                print ("\033[42mVocê foi bem, mas podia ter ido melhor!\033[0m");            //
+            }
         } else {
-            print ("Você perdeu\n");
+            print ("\033[31mVocê errou\033[0m\n");
         if ($chute > $sorteado){
-            print ("Esse número é maior que o valor que estou pensando\n");
+            print ("Esse número é maior que o valor que estou pensando\n");  // Algoritmo para as dicas;
         } else {
             print ("Esse número é menor que o valor que estou pensando\n");
             }
