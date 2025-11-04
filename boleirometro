@@ -1,0 +1,85 @@
+<?php 
+
+    function pergunta_simples ($texto, $respota_certa) {
+        $resposta = strtolower(readline($texto));  // Converte o texto da pergunta em minúsculo;
+        return ($resposta == strtolower($respota_certa)) ? 1 : 0;  // Gera o valor de boole; se for falso -> 0, verdadeiro -> 1;
+    }
+    
+    function mostrar_pontos ($pontos) {
+        print ("\n--- Resultado ---\n");
+        print ("Pontuação Total: $pontos pontos\n");
+
+        $pereba = [
+            "O clássico 'perna de pau'! Mal sabe a diferença entre lateral e escanteio!",
+            "Seu chute parece reposição de goleiro cansado.",
+            "Seu lugar é no banco... assistindo, não jogando.",
+            "Melhor você ficar na resenha e deixa a bola pros outros."
+        ];
+
+        $boleirinho = [
+            "Boleirinho de fim de semana! Joga, mas foge quando começa a chover.",
+            "Você até tem toque de bola, mas corre menos que o gandula.",
+            "É o camisa 10 do churrasco, mas no campo some.",
+            "Às vezes acerta um drible, às vezes acerta o mato."
+        ];
+
+         $craque = [
+            "Craque do campinho! Chega de meia, pede a bola e manda de trivela.",
+            "Sua canhota é calibrada, estilo Arrascaeta em dia inspirado.",
+            "Os amigos te chamam de maestro, e com razão.",
+            "Se tivesse empresário, já tava no Real Madrid da Várzea!"
+        ];
+
+        $lenda = [
+            "Lenda viva do futebol! Você é tipo Ronaldinho misturado com Casemiro.",
+            "O juiz te respeita, o zagueiro te teme e a bola te obedece.",
+            "GOAT! Seu toque faz até o narrador gritar antes do gol.",
+            "Você não joga futebol... o futebol é que joga VOCÊ!"
+        ];
+
+        if ($pontos <= 2){
+            print ("Seu nível de boleiro é PEREBA");
+           $nivel = $pereba[array_rand($pereba)];
+        } elseif ($pontos <= 4){
+            print ("Seu nível de boleiro é BOLEIRINHO");
+            $nivel = $boleirinho[array_rand($boleirinho)];
+        } elseif ($pontos <=6) {
+            print ("Seu nível de boleiro é CRAQUE");
+            $nivel = $craque[array_rand($craque)];
+        } else {
+            print ("Seu nível de boleiro é LENDA");
+            $nivel = $lenda[array_rand($lenda)];
+        }
+
+        print ($nivel . "\n");
+        print ("Obrigado por jogar o boleirômetro!");
+    }
+
+    $pontos = 0;
+
+    print ("\n------- Boleirômetro ---------\n");
+    print ("| Teste seu nível de Boleiro |!\n");
+    print ("------------------------------\n");
+
+    $pontos += pergunta_simples("Como você prefere chutar? (| bico | chapada | pancadão | \n\n", "chapada");
+    $pontos += pergunta_simples("Domingo é dia do que? (| pelada | netflix | sair com a 10/10 | \n\n", "pelada");
+    $pontos += pergunta_simples("Sua camisa preferida é qual? (| social | estampa | manto sagrado | \n\n", "manto sagrado"); // Manto Sagrado == Camisa de time;
+
+    $joga = readline ("Quantas vezes na semana você joga? \n\n");
+    if ($joga >= 5) {
+        $pontos += 2;
+    } elseif ($joga >= 3) {
+        $pontos += 1;
+    }
+
+    $gols = (int) readline ("Quantos gols você já fez na vida (Aproximadamente): \n\n");
+    $pontos += min(floor($gols/10), 3);
+
+    $copas = readline ("Quantas Copas do Mundo o Brasil ganhou? \n\n");
+    if ($copas == 5){
+        $pontos++;
+    }
+
+    mostrar_pontos($pontos);
+   
+?>
